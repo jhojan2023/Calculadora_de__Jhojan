@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+        }
+        input[type="text"],
+        select,
+        button {
+            width: 180px;
+            height: 40px;
+            text-align: right;
+            font-size: 18px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        select {
+            background-color: white;
+            color: #4CAF50;
+            text-align: center;
+            margin-top: 10px; /* Mueve el elemento hacia abajo */
+        }
+        table {
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        body {
+            background-color: red;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 18px;
+            margin: 10px 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script>
+        function calcular(operador) {
+            var num1 = parseFloat(document.getElementById("num1").value);
+            var num2 = parseFloat(document.getElementById("num2").value);
+            var resultado = 0;
+
+            if (isNaN(num1) || isNaN(num2)) {
+                alert("Por favor, ingrese números válidos.");
+            } else {
+                switch (operador) {
+                    case 'sumar':
+                        resultado = num1 + num2;
+                        break;
+                    case 'restar':
+                        resultado = num1 - num2;
+                        break;
+                    case 'multiplicar':
+                        resultado = num1 * num2;
+                        break;
+                    case 'dividir':
+                        if (num2 === 0) {
+                            alert("No se puede dividir por cero.");
+                        } else {
+                            resultado = num1 / num2;
+                        }
+                        break;
+                }
+                document.getElementById("resultado").value = resultado;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Calculadora Suprema</h1>
+    <table>
+        <tr>
+            <td>Número 1:</td>
+            <td><input type="text" id="num1"></td>
+        </tr>
+        <tr>
+            <td>Número 2:</td>
+            <td><input type="text" id="num2"></td>
+        </tr>
+        <tr>
+            <td>Operación:</td>
+            <td>
+                <select id="operacion">
+                    <option value="sumar">Sumar</option>
+                    <option value="restar">Restar</option>
+                    <option value="multiplicar">Multiplicar</option>
+                    <option value="dividir">Dividir</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Resultado:</td>
+            <td><input type="text" id="resultado" readonly></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button onclick="calcular(document.getElementById('operacion').value)">Calcular</button></td>
+        </tr>
+    </table>
+</body>
+</html>
